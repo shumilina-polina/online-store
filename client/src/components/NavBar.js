@@ -3,7 +3,7 @@ import { observer } from "mobx-react-lite";
 import React, { useContext } from "react";
 import { Button, Container, Nav, Navbar } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
-import { SHOP_ROUTE } from "utils/consts";
+import { ADMIN_ROUTE, LOGIN_ROUTE, SHOP_ROUTE } from "utils/consts";
 
 export const NavBar = observer(() => {
   const { user } = useContext(Context);
@@ -16,12 +16,14 @@ export const NavBar = observer(() => {
         <Nav className="ml-auto" style={{ color: "white" }}>
           {user.isAuth ? (
             <>
-              <Button variant={"outline-light"}>
-                Админ панель
-              </Button>
-              <Button variant={"outline-light"} className="ms-2">
-                Выйти
-              </Button>
+              <NavLink to={ADMIN_ROUTE}>
+                <Button variant={"outline-light"}>Админ панель</Button>
+              </NavLink>
+              <NavLink to={LOGIN_ROUTE}>
+                <Button variant={"outline-light"} className="ms-2">
+                  Выйти
+                </Button>
+              </NavLink>
             </>
           ) : (
             <>
